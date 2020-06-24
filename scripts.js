@@ -34,11 +34,9 @@ function skip() {
     video.currentTime += parseFloat(this.dataset.skip)
 };
 
-function handleRangeUpate() {
+function handleRangeUpdate() {
     video[this.name] = this.value;
-    // console.log(this.name);
-    // console.log(this.value);
-}
+};
 
 function handleProgress() {
     // * 100 to show whole percentage not decimals

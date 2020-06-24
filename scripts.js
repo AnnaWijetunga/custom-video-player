@@ -46,6 +46,12 @@ function handleProgress() {
     progressBar.getElementsByClassName.flexBasis = `${percent}%`;
 };
 
+function scrub(e) {
+    const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+    video.currentTime = scrubTime;
+    // console.log(e);
+}
+
 // hook up the event listeners
 toggle.addEventListener('click', togglePlay);
 // but the button itself doesn't update - still show the arrow
@@ -53,9 +59,16 @@ toggle.addEventListener('click', togglePlay);
 // too cool! now when I click, the video pauses/restarts
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
+video.addEventListener('timeupdate', handleProgress);
 // updates the play button to work
 video.addEventListener('click', togglePlay);
 // to skip fast forward
 skipButtons.forEach(button => button.addEventListener('click', skip));
 ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
 ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
+
+let mousedown = false;
+progress.addEventListener('click', scrub);
+progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
+progress.addEventListener('mousedown', () => mousedown = true);
+progress.addEventListener('mouseup', () => mousedown = false);

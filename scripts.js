@@ -31,8 +31,12 @@ function updateButton() {
 function skip() {
     console.log('Skipping!');
     // parseFloat converts to number
-    video.currentTime += parseFloat(this.dataset.skip);
+    video.currentTime += parseFloat(this.dataset.skip)
 };
+
+function handleRangeUpate() {
+    console.log(this.value);
+}
 
 // hook up the event listeners
 toggle.addEventListener('click', togglePlay);
@@ -45,3 +49,4 @@ video.addEventListener('pause', updateButton);
 video.addEventListener('click', togglePlay);
 // to skip fast forward
 skipButtons.forEach(button => button.addEventListener('click', skip));
+ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));

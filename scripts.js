@@ -21,6 +21,16 @@ function togglePlay() {
     }
 };
 
+function updateButton() {
+    console.log('Update the button');
+}
+
 // hook up the event listeners
+toggle.addEventListener('click', togglePlay);
+// but the button itself doesn't update - still show the arrow
+// we have to update the text inside that button
 // too cool! now when I click, the video pauses/restarts
+video.addEventListener('play', updateButton);
+video.addEventListener('pause', updateButton);
+// updates the play button to work
 video.addEventListener('click', togglePlay);

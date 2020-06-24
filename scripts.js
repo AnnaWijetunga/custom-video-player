@@ -11,6 +11,9 @@ const ranges = player.querySelectorAll('.player__slider');
 
 // build out functions
 function togglePlay() {
+    // alternate method to do the same thing:
+    // const method = video.paused ? 'play' : 'pause';
+    // video[method]();
     if(video.paused) {
         video.play();
     } else {
@@ -18,5 +21,6 @@ function togglePlay() {
     }
 };
 
-
-// hook up the event listeners.
+// hook up the event listeners
+// too cool! now when I click, the video pauses/restarts
+video.addEventListener('click', togglePlay);

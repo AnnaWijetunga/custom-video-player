@@ -35,8 +35,16 @@ function skip() {
 };
 
 function handleRangeUpate() {
-    console.log(this.value);
+    video[this.name] = this.value;
+    // console.log(this.name);
+    // console.log(this.value);
 }
+
+function handleProgress() {
+    // * 100 to show whole percentage not decimals
+    const percent = (video.currentTime / video.duration) * 100;
+    progressBar.getElementsByClassName.flexBasis = `${percent}%`;
+};
 
 // hook up the event listeners
 toggle.addEventListener('click', togglePlay);

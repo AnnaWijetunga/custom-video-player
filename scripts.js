@@ -26,7 +26,13 @@ function updateButton() {
     const icon = this.paused ? '►' : '❚ ❚';
     toggle.textContent = icon;
     console.log(icon);
-  }
+};
+
+function skip() {
+    console.log('Skipping!');
+    // parseFloat converts to number
+    video.currentTime += parseFloat(this.dataset.skip);
+};
 
 // hook up the event listeners
 toggle.addEventListener('click', togglePlay);
@@ -37,3 +43,5 @@ video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
 // updates the play button to work
 video.addEventListener('click', togglePlay);
+// to skip fast forward
+skipButtons.forEach(button => button.addEventListener('click', skip));

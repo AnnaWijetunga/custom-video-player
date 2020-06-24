@@ -21,9 +21,12 @@ function togglePlay() {
     }
 };
 
+// updates the button to pause or play
 function updateButton() {
-    console.log('Update the button');
-}
+    const icon = this.paused ? '►' : '❚ ❚';
+    toggle.textContent = icon;
+    console.log(icon);
+  }
 
 // hook up the event listeners
 toggle.addEventListener('click', togglePlay);
